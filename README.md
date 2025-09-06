@@ -43,7 +43,7 @@ Given a discrete-time sensor model:
 
 * **Measurement equation**
 
-  $ d_k = p_k + b_k + v_k,\quad v_k \sim \mathcal{N}(0,\,R) $
+  $d_k = p_k + b_k + v_k,\quad v_k \sim \mathcal{N}(0,\,R)$
 
 where
 
