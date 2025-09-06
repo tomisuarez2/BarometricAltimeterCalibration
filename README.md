@@ -39,7 +39,7 @@ Given a discrete-time sensor model:
 
 * **Bias evolution**
 
-  $ b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0,\,qT_s) $
+  ${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0,\,qT_s)}$
 
 * **Measurement equation**
 
