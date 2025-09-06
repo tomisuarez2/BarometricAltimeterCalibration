@@ -141,10 +141,10 @@ python -m CalibrationTests.test_signal_characerization
 * **Allan deviation curve** with fitted slopes
 * Estimated noise parameters:
 
-  ```
+ ```bash
  Barometric altimeter white measurement–noise variance [m²]: 0.00023450677604763102
  Barometric altimeter bias random–walk intensity [m²/s]: 0.0002943081206920378
-  ```
+ ```
 * Visualization of white noise (−½ slope) and random walk (+½ slope) regions
 
 ![Allan Deviation Plot](characterization%20result%20images/allan_dev_plot.png)
