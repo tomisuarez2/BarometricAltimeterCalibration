@@ -148,7 +148,7 @@ def auto_estimate_R_q_from_allan(
         min_points : Minimum number of consecutive points to accept a region.
 
     Returns:
-        R : Measurement noise variance [m^2].
+        R_fs : Measurement noise variance [m^2/Hz].
         q : Random walk intensity [m^2/s].
         tau_white_region : (min_tau, max_tau) used for white noise fit.
         tau_rw_region : (min_tau, max_tau) used for random walk fit.
@@ -195,12 +195,12 @@ def auto_estimate_R_q_from_allan(
     if reg_w:
         idx = range(reg_w[0], reg_w[1]+1)
         _, intercept_w, *_ = linregress(logtau[idx], logsig[idx])
-        # Model: sigma = sqrt(R)/sqrt(tau) => log10(sigma) = -0.5*log10(tau) + log10(sqrt(R))
+        # Model: sigma = sqrt(R)/sqrt(tau) => log10(sigma) = -0.5*log10(tau) + log10(sqrt(R/fs))
         sqrtR = 10**intercept_w
-        R = sqrtR**2
+        R_fs = sqrtR**2
         tau_white = (tau[idx[0]], tau[idx[-1]])
     else:
-        R, tau_white = np.nan, None
+        R_fs, tau_white = np.nan, None
 
     # Random walk region 
     reg_rw = find_region(0.5)
@@ -215,12 +215,12 @@ def auto_estimate_R_q_from_allan(
         q, tau_rw = np.nan, None
 
     if plot:
-        utils.show_loglog_data(tau, np.vstack([sigma,np.sqrt(R)/np.sqrt(tau),np.sqrt(q/3)*np.sqrt(tau)]).T, 
+        utils.show_loglog_data(tau, np.vstack([sigma,np.sqrt(R_fs)/np.sqrt(tau),np.sqrt(q/3)*np.sqrt(tau)]).T, 
                                legend=["Relative altitude Allan Dev.","White-Gaussian Noise","Random-Walk bias"],
                                xlabel="Interval Length [s]", ylabel="Allan Deviation [m]",
                                title="Altitude signal Allan Deviation")
 
-    return R, q, tau_white, tau_rw
+    return R_fs, q, tau_white, tau_rw
 
 
 
