@@ -33,7 +33,7 @@ tau, avar = bar.compute_allan_variance(bar_data, sampling_freq, m_steps='exponen
 rel_alt_a_dev = np.sqrt(avar[:,:1]).reshape(-1)
 
 # Estimate R and q values
-R, q, tauwn, taurw = bar.auto_estimate_R_q_from_allan(tau, rel_alt_a_dev, plot=True)
+R, q, tauwn, taurw = bar.auto_estimate_R_q_from_allan(tau, rel_alt_a_dev, sampling_freq, plot=True)
 
 # Show results
 print(f"Barometric altimeter white measurement–noise variance [m²]: {R}")
