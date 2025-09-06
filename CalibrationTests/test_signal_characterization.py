@@ -6,7 +6,7 @@ University: Universidad Nacional de Cuyo
 
 import numpy as np
 
-from BarometricAltimeterCalibrationModules import barometric_altimeter_calibration as bar
+from BarometricAltimeterCalibrationModules import bar_altimeter_calibration as bar
 from BarometricAltimeterCalibrationModules.utils import extract_barometric_altimeter_data, show_time_data
 
 # Use synthetic data

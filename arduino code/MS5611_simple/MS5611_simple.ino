@@ -72,7 +72,7 @@ void loop () {
         double relativeAltitude = ms5611.getAltitude (realPressure, referencePressure);
 
         Serial.print (relativeAltitude);
-        Serial.println(",");
+        Serial.print(",");
         Serial.println (Temperature);
 
     }
