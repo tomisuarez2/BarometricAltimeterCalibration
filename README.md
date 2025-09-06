@@ -39,11 +39,11 @@ Given a discrete-time sensor model:
 
 * **Bias evolution**
 
-  ${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0,\,qT_s)}$
+  ${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0, qT_s)}$
 
 * **Measurement equation**
 
-  $d_k = p_k + b_k + v_k,\quad v_k \sim \mathcal{N}(0,\,R)$
+  $d_k = p_k + b_k + v_k,\quad v_k \sim \mathcal{N}(0, R)$
 
 where
 
@@ -59,15 +59,11 @@ From Allan deviation theory:
 
 * **White noise region**
 
-  $
-  \sigma(\tau) = \sqrt{\frac{R\,T_s}{\tau}}
-  $
+  $\sigma(\tau) = \sqrt{\frac{RT_s}{\tau}}$
 
 * **Random walk bias region**
 
-  $
-  \sigma(\tau) = \sqrt{\frac{q}{3}} \,\sqrt{\tau}
-  $
+  $\sigma(\tau) = \sqrt{\frac{q}{3}}\sqrt{\tau}$
 
 These relationships allow estimation of $R$ and $q$ directly from logged data.
 
