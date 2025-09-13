@@ -151,7 +151,31 @@ python -m CalibrationTests.test_signal_characerization
 
 ![Real vs Simulated data](characterization%20result%20images/real_vs_sim.png)
 
---
+---
+## ⚠️ Important Note on Power Supply and Thermal Drift
+
+During experimentation with the **GY-63 breakout module (MS5611)**, a long-term first-order thermal drift was observed in the altitude signal when powering the board at **5 V** and/or tying the **protocol selection pin** (PS) to VCC.
+
+- **Cause:**  
+  - Powering the module from 5 V engages the on-board LDO regulator, which generates heat close to the sensor package.  
+  - Driving the protocol select pin (PS) to 3.3 V is unnecessary for I²C mode, since the sensor already includes internal pull-ups. This extra current path also adds heat.  
+  - Both effects cause the sensor die to **continuously heat up** for several hours (≈3 h at 20 °C ambient), producing an apparent first-order drift in the altitude readings.
+
+- **Solution:**  
+  - Power the module directly at **3.3 V** (bypassing the on-board regulator).  
+  - Leave the protocol select pin **unconnected** when using I²C.  
+
+- **Result:**  
+  - The sensor stabilizes much faster (≈15 min warm-up).  
+  - Thermal drift is greatly reduced, and altitude readings behave as expected.
+
+* Visualization of measured relative altitude vs measured ambient temperature after 15 minutes warm up (5 V vs 3.3 V)
+
+![Temp vs Alt 5V](characterization%20result%20images/temp_vs_rel_alt_5_Vt.png)
+
+![Temp vs Alt 3.3V](characterization%20result%20images/temp_vs_rel_alt_3_3_Vm.png)
+
+👉 If you are using the MS5611 in long-duration experiments, make sure to power the GY-63 module correctly to avoid mistaking thermal self-heating for atmospheric effects.
 
 ---
 ## 📈 Input Data Format

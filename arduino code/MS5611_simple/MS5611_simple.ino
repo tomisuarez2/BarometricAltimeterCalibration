@@ -67,7 +67,7 @@ void loop () {
 
         digitalWrite (LED_BUILTIN, !digitalRead (LED_BUILTIN)); // 12.5 us on, 12.5 us off if
                                                                 // MS5611_ULTRA_HIGH_RES, MS5611_STANDARD 
-        long realPressure = ms5611.getPressure (true);
+        double realPressure = ms5611.getPressure (true);
         double Temperature = ms5611.getTemperature (true);
         double relativeAltitude = ms5611.getAltitude (realPressure, referencePressure);
 

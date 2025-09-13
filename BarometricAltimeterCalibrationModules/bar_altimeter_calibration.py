@@ -24,7 +24,7 @@ def simulate_sensor_data(
     fs: float, 
     R: float, 
     q: float, 
-    seed: int = None
+    temp: np.ndarray
 ) -> np.ndarray:
     """
     Simulate synthetic sensor data with white noise and bias random walk.
@@ -39,24 +39,21 @@ def simulate_sensor_data(
     Returns:
         y: Synthetic sensor measurement array of length N.
     """
-    if seed is not None:
-        np.random.seed(seed)
+    # Initialization
+    y = np.zeros(N)
 
     # White noise
-    w = 0
+    v = 0
     if not np.isnan(R):
-        w = np.random.normal(0, np.sqrt(R), size=N)
+        v = np.random.normal(0, np.sqrt(R), size=N)
 
     # Random walk increments for bias
-    u = 0
+    w = 0
     if not np.isnan(q):
-        u = np.random.normal(0, np.sqrt(q/fs), size=N)
+        w = np.random.normal(0, np.sqrt(q/fs), size=N)  
+    u = np.cumsum(w) 
 
-    # Integrate random walk bias
-    b = np.cumsum(u)
-
-    # Synthetic measurements
-    y = b + w
+    y = u + v
 
     return y
 
