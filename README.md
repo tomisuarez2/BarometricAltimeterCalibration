@@ -171,9 +171,9 @@ During experimentation with the **GY-63 breakout module (MS5611)**, a long-term 
 
 * Visualization of measured relative altitude vs measured ambient temperature after 15 minutes warm up (5 V vs 3.3 V)
 
-![Temp vs Alt 5V](characterization%20result%20images/temp_vs_rel_alt_5_Vt.png)
+![Temp vs Alt 5V](characterization%20result%20images/temp_vs_rel_alt_5_V.png)
 
-![Temp vs Alt 3.3V](characterization%20result%20images/temp_vs_rel_alt_3_3_Vm.png)
+![Temp vs Alt 3.3V](characterization%20result%20images/temp_vs_rel_alt_3_3_V.png)
 
 👉 If you are using the MS5611 in long-duration experiments, make sure to power the GY-63 module correctly to avoid mistaking thermal self-heating for atmospheric effects.
 
