@@ -59,13 +59,13 @@ We form cluster $i$ (block) averages of length $m$ samples: $\tau = mT_s$, then 
 
 $$
 \bar d^{(m)}_i = \frac{1}{m}\sum_{k=0}^{m-1} d_{i m + k},
-\qquad \tau = m T_s.
+\qquad \tau = m T_s
 $$
 
 The Allan variance at averaging time $\tau$ is
 
 $$
-\sigma^2(\tau) \;=\; \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big].
+\sigma^2(\tau) \;=\; \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big]
 $$
 
 We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
@@ -77,14 +77,14 @@ We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
 Assume $d_k = p_0 + v_k$ (ignore bias for the moment). For the block average,
 
 $$
-\bar v_i = \frac{1}{m}\sum_{j=0}^{m-1} v_{im+j}.
+\bar v_i = \frac{1}{m}\sum_{j=0}^{m-1} v_{im+j}
 $$
 
 Because the $v$'s are independent with $\mathrm{Var}(v_k)=R$,
 
 $$
 \mathrm{Var}(\bar v_i) = \frac{1}{m^2}\sum_{j=0}^{m-1}\mathrm{Var}(v_{im+j})
-= \frac{mR}{m^2} = \frac{R}{m}.
+= \frac{mR}{m^2} = \frac{R}{m}
 $$
 
 Now
@@ -97,7 +97,7 @@ $$
 (averages from disjoint blocks are independent), so Allan variance
 
 $$
-\sigma^2(\tau) \;=\; \frac{1}{2}\cdot 2\frac{R}{m} \;=\; \frac{R}{m}.
+\sigma^2(\tau) = \frac{1}{2}\cdot 2\frac{R}{m} = \frac{R}{m}
 $$
 
 Substitute $m=\tau/T_s$:
@@ -109,13 +109,19 @@ $$
 Equivalently,
 
 $$
-\sigma(\tau) = \sqrt{\dfrac{R\,T_s}{\tau}}.
+\sigma(\tau) = \sqrt{\dfrac{RT_s}{\tau}}.
 $$
 
-**Rearranging to get $R$:**
+So on a log–log Allan plot the white measurement noise region appears as a straight line of slope $-\tfrac{1}{2}$. From the intercept $a_{\text{wn}}$ of the fit
 
 $$
-\boxed{\;R \;=\; \sigma^2(\tau)\,\dfrac{\tau}{T_s}\; }.
+\log_{10}\sigma(\tau) = -\tfrac12\log_{10}\tau + a_{\text{rw}},
+$$
+
+we get 
+
+$$
+R = \tfrac big(10^{a_{\text{wn}}}\big)^2 T_s
 $$
 
 ---
@@ -211,6 +217,70 @@ $$
 
 ---
 
+---
+
+## 4) Allan variance (exact discrete expression)
+
+Recall Allan variance is one half of the expected squared difference:
+
+$$
+\boxed{\;
+\sigma^2(\tau) \;=\; \tfrac12\operatorname{Var}(\bar b_{i+1}-\bar b_i)
+\;=\; \frac{Q}{2}\cdot\frac{2m^2+1}{3m}
+\;=\; Q\,\frac{2m^2+1}{6m}.
+\;}
+$$
+
+Replace $Q=qT_s$ and $m=\tau/T_s$ to express in $\tau$ and $T_s$. Two algebraically equivalent forms are useful:
+
+1. Expand to isolate the dominant and correction terms:
+
+$$
+\boxed{\;
+\sigma^2(\tau)
+\;=\; \frac{q}{3}\,\tau \;+\; \frac{q\,T_s^{2}}{6\,\tau}.
+\;}
+$$
+
+(derivation: substitute $Q=qT_s$ and simplify).
+
+2. Or as a single fraction:
+
+$$
+\sigma^2(\tau)
+\;=\; \frac{6\tau\,\sigma^2(\tau)}{2\tau^2 + T_s^2}\quad\text{(rearranged when solving for }q\text{)}.
+$$
+
+The first form is very instructive: it is the exact discrete formula and clearly shows the **leading term** $(q/3)\tau$ and the **finite-sample correction** $\dfrac{qT_s^2}{6\tau}$.
+
+---
+
+## 5) Asymptotic (continuous / large-$m$) approximation
+
+For $m\gg 1$ (i.e. $\tau \gg T_s$), the correction term is negligible. Then
+
+$$
+\sigma^2(\tau) \approx \frac{q}{3}\,\tau
+\qquad\Longrightarrow\qquad
+\sigma(\tau) \approx \sqrt{\frac{q}{3}}\,\sqrt{\tau}.
+$$
+
+So on a log–log Allan plot the random-walk region appears as a straight line of slope $+\tfrac{1}{2}$. From the intercept $a_{\text{rw}}$ of the fit
+
+$$
+\log_{10}\sigma(\tau) = \tfrac12\log_{10}\tau + a_{\text{rw}},
+$$
+
+we get (neglecting finite-sample correction)
+
+$$
+\boxed{\;q \approx 3\cdot\big(10^{a_{\text{rw}}}\big)^2.\;}
+$$
+
+This is the common practical formula used when $\tau$ is comfortably larger than $T_s$.
+
+---
+Summarazing:
 
 * **White noise region**
 
