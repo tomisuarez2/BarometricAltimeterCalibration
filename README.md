@@ -74,8 +74,6 @@ $$
 
 We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
 
---
-
 ### White measurement noise $v_k$
 
 Assume $d_k = p_0 + v_k$ (ignore bias for the moment). For the block average,
@@ -125,10 +123,8 @@ $$
 we get 
 
 $$
-R = \tfrac \big(10^{a_{\text{wn}}}\big)^2 T_s
+R = \tfrac{\big(10^{a_\text{wn}}\big) ^2}{T_s}
 $$
-
---
 
 ### Random-walk bias $b_k$
 
