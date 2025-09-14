@@ -39,7 +39,9 @@ Given a discrete-time sensor model:
 
 * **Bias evolution**
 
-$${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0, Q)}$$, $Q = qT_s$
+$${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0, Q)}$$ 
+
+$Q = qT_s$
 
 * **Measurement equation**
 
@@ -65,14 +67,14 @@ $$
 The Allan variance at averaging time $\tau$ is
 
 $$
-\sigma^2(\tau) \;=\; \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big]
+\sigma^2(\tau) = \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big]
 $$
 
 We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
 
 ---
 
-## 2. White measurement noise $v_k$
+### White measurement noise $v_k$
 
 Assume $d_k = p_0 + v_k$ (ignore bias for the moment). For the block average,
 
@@ -103,19 +105,19 @@ $$
 Substitute $m=\tau/T_s$:
 
 $$
-\boxed{\;\sigma^2(\tau) = \dfrac{R}{m} = \dfrac{R\,T_s}{\tau}\;}.
+\sigma^2(\tau) = \dfrac{R}{m} = \dfrac{R\,T_s}{\tau}
 $$
 
 Equivalently,
 
 $$
-\sigma(\tau) = \sqrt{\dfrac{RT_s}{\tau}}.
+\sigma(\tau) = \sqrt{\dfrac{RT_s}{\tau}}
 $$
 
-So on a log–log Allan plot the white measurement noise region appears as a straight line of slope $-\tfrac{1}{2}$. From the intercept $a_{\text{wn}}$ of the fit
+So on a log–log Allan plot the white measurement noise region appears as a straight line of slope $-\tfrac{1}{2}$. From the intercept $a_{\text{wn}}$ of the fit:
 
 $$
-\log_{10}\sigma(\tau) = -\tfrac12\log_{10}\tau + a_{\text{rw}},
+\log_{10}\sigma(\tau) = -\tfrac12\log_{10}\tau + a_{\text{wn}},
 $$
 
 we get 
@@ -126,18 +128,18 @@ $$
 
 ---
 
-## 3. Random-walk bias $b_k$
+### Random-walk bias $b_k$
 
-Bias evolves $b_{k+1}=b_k+w_k$ with increments $w_k$ independent and $\mathrm{Var}(w_k)=q\,T_s$.
+Bias evolves $b_{k+1} = b_k + w_k$ with increments $w_k$ independent and $\mathrm{Var}(w_k)=qT_s$.
 
 We want $\sigma^2(\tau)=\tfrac12\mathbb{E}[(\overline{b}_{i+1}-\overline{b}_i)^2]$ for block averages $\overline b_i$ over $m$ samples.
 
-Then:
+We need to:
 
 * Write $b_{k}$ as cumulative sum of increments: $b_{k} = b_0 + \sum_{j=0}^{k-1} w_j$.
 * Express block average $\overline b_i = \frac1m \sum_{n=0}^{m-1} b_{im+n}$ as a double sum of increments $w_j$ with triangular weights.
 
-Then
+Then:
 
 $$\overline b_i = \frac1m \sum_{n=0}^{m-1} (b_0 + \sum_{j=0}^{im+n-1} w_j)$, we can assume for the derivation $b_0 = 0$$
 
@@ -148,7 +150,7 @@ $$\overline b_i = \frac1m \sum_{n=0}^{m-1} \sum_{j=0}^{im-1} w_j + \frac1m \sum_
 $$\overline b_i = \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} (m-n) w_{im+n}$$
 
 ---
-## 2) Expression for $\bar b_{i+1}-\bar b_i$
+### Expression for $\bar b_{i+1}-\bar b_i$
 
 Compute similarly $\bar b_{i+1}$ and subtract:
 
