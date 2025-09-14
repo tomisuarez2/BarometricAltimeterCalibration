@@ -41,7 +41,9 @@ Given a discrete-time sensor model:
 
 $${b_{k+1} = b_k + w_k,\quad w_k \sim \mathcal{N}(0, Q)}$$ 
 
-$Q = qT_s$
+where
+
+* $Q = qT_s$
 
 * **Measurement equation**
 
@@ -60,14 +62,14 @@ where
 We form cluster $i$ (block) averages of length $m$ samples: $\tau = mT_s$, then from Allan variance definition (discrete sampling):
 
 $$
-\bar d^{(m)}_i = \frac{1}{m}\sum_{k=0}^{m-1} d_{i m + k},
+\bar d^{(m)}_i = \frac{1}{m}\sum_{k=0}^{m-1} d_{i m + k}
 \qquad \tau = m T_s
 $$
 
 The Allan variance at averaging time $\tau$ is
 
 $$
-\sigma^2(\tau) = \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big]
+\sigma^2(\tau) = \frac{1}{2}\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big]
 $$
 
 We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
