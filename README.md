@@ -161,9 +161,7 @@ Subtract $\bar b_i$. The common sum $\sum_{j=0}^{im-1} w_j$ cancels. Collect ter
 
 * Terms with indices $j=im + n$ (the middle block) appear from the expansion of $\bar b_{i+1}$ as full sum and from $\bar b_i$ with coefficient $(m-n)/m$. Their net coefficient is
 
-  $$
-  1 - \frac{m-n}{m} = \frac{n}{m}
-  $$
+$$1 - \frac{m-n}{m} = \frac{n}{m}$$
   
 * Terms with indices $j=(i+1)m + n$ (the next block) appear only in $\bar b_{i+1}$ with coefficient $(m-n)/m$.
 
@@ -175,9 +173,7 @@ $$
 
 This is a linear combination of $2m$ independent increments $w$ with known deterministic coefficients.
 
----
-
-## 3) Variance of the difference (exact finite-$m$ expression)
+### Variance of the difference (exact finite-$m$ expression)
 
 Because the $w$'s are independent, the variance of the linear combination equals $Q$ times the sum of squared coefficients:
 
