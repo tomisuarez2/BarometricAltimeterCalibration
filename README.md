@@ -176,7 +176,7 @@ Because the $w$'s are independent, the variance of the linear combination equals
 
 $$
 \begin{aligned}
-\operatorname{Var}(\bar b_{i+1}-\bar b_i)
+\mathrm{Var}(\bar b_{i+1}-\bar b_i)
 &= \frac{Q}{m^2}\sum_{n=0}^{m-1} \big( n^2 + (m-n)^2 \big) \\
 &= \frac{Q}{m^2}\Big( \sum_{n=0}^{m-1} n^2 + \sum_{n=0}^{m-1} (m-n)^2 \Big)
 \end{aligned}
@@ -204,7 +204,7 @@ $$
 Therefore
 
 $$
-\operatorname{Var}(\bar b_{i+1}-\bar b_i)
+\mathrm{Var}(\bar b_{i+1}-\bar b_i)
 = \frac{Q}{m^2}\cdot \frac{m(2m^2+1)}{3}
 = Q\,\frac{2m^2+1}{3m}.
 $$
