@@ -74,7 +74,7 @@ $$
 
 We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
 
----
+--
 
 ### White measurement noise $v_k$
 
@@ -95,7 +95,7 @@ Now
 
 $$
 \mathrm{Var}(\bar v_{i+1}-\bar v_i) = \mathrm{Var}(\bar v_{i+1})+\mathrm{Var}(\bar v_i)
-= 2\frac{R}{m},
+= 2\frac{R}{m}
 $$
 
 (averages from disjoint blocks are independent), so Allan variance
@@ -107,7 +107,7 @@ $$
 Substitute $m=\tau/T_s$:
 
 $$
-\sigma^2(\tau) = \dfrac{R}{m} = \dfrac{R\,T_s}{\tau}
+\sigma^2(\tau) = \dfrac{R}{m} = \dfrac{RT_s}{\tau}
 $$
 
 Equivalently,
@@ -119,16 +119,16 @@ $$
 So on a log–log Allan plot the white measurement noise region appears as a straight line of slope $-\tfrac{1}{2}$. From the intercept $a_{\text{wn}}$ of the fit:
 
 $$
-\log_{10}\sigma(\tau) = -\tfrac12\log_{10}\tau + a_{\text{wn}},
+\log_{10}\sigma(\tau) = -\tfrac12\log_{10}\tau + a_{\text{wn}}
 $$
 
 we get 
 
 $$
-R = \tfrac big(10^{a_{\text{wn}}}\big)^2 T_s
+R = \tfrac \big(10^{a_{\text{wn}}}\big)^2 T_s
 $$
 
----
+--
 
 ### Random-walk bias $b_k$
 
