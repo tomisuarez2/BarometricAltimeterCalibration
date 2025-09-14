@@ -55,7 +55,99 @@ where
 * $R$ = measurement noise variance \[m²],
 * $T_s$ = sampling period \[s].
 
-From Allan deviation theory:
+We form cluster $i$ (block) averages of length $m$ samples: $\tau = mT_s$, then from Allan variance definition (discrete sampling):
+
+$$
+\bar d^{(m)}_i = \frac{1}{m}\sum_{k=0}^{m-1} d_{i m + k},
+\qquad \tau = m T_s.
+$$
+
+The Allan variance at averaging time $\tau$ is
+
+$$
+\sigma^2(\tau) \;=\; \frac{1}{2}\,\mathbb{E}\Big[ \big(\bar d^{(m)}_{i+1}-\bar d^{(m)}_{i}\big)^2 \Big].
+$$
+
+We will evaluate $\sigma^2(\tau)$ for the two noise types mentioned above.
+
+---
+
+## 2. White measurement noise $v_k$
+
+Assume $d_k = p_0 + v_k$ (ignore bias for the moment). For the block average,
+
+$$
+\bar v_i = \frac{1}{m}\sum_{j=0}^{m-1} v_{im+j}.
+$$
+
+Because the $v$'s are independent with $\mathrm{Var}(v_k)=R$,
+
+$$
+\mathrm{Var}(\bar v_i) = \frac{1}{m^2}\sum_{j=0}^{m-1}\mathrm{Var}(v_{im+j})
+= \frac{mR}{m^2} = \frac{R}{m}.
+$$
+
+Now
+
+$$
+\mathrm{Var}(\bar v_{i+1}-\bar v_i) = \mathrm{Var}(\bar v_{i+1})+\mathrm{Var}(\bar v_i)
+= 2\frac{R}{m},
+$$
+
+(averages from disjoint blocks are independent), so Allan variance
+
+$$
+\sigma^2(\tau) \;=\; \frac{1}{2}\cdot 2\frac{R}{m} \;=\; \frac{R}{m}.
+$$
+
+Substitute $m=\tau/T_s$:
+
+$$
+\boxed{\;\sigma^2(\tau) = \dfrac{R}{m} = \dfrac{R\,T_s}{\tau}\;}.
+$$
+
+Equivalently,
+
+$$
+\sigma(\tau) = \sqrt{\dfrac{R\,T_s}{\tau}}.
+$$
+
+**Rearranging to get $R$:**
+
+$$
+\boxed{\;R \;=\; \sigma^2(\tau)\,\dfrac{\tau}{T_s}\; }.
+$$
+
+---
+
+## 3. Random-walk bias $b_k$
+
+Bias evolves $b_{k+1}=b_k+w_k$ with increments $w_k$ independent and $\mathrm{Var}(w_k)=q\,T_s$.
+
+We want $\sigma^2(\tau)=\tfrac12\mathbb{E}[(\overline{b}_{i+1}-\overline{b}_i)^2]$ for block averages $\overline b_i$ over $m$ samples.
+
+Then:
+
+* Write $b_{k}$ as cumulative sum of increments: $b_{k} = b_0 + \sum_{j=0}^{k-1} w_j$.
+* Express block average $\overline b_i = \frac1m \sum_{n=0}^{m-1} b_{im+n}$ as a double sum of increments $w_j$ with triangular weights.
+
+Then
+
+$\overline b_i = \frac1m \sum_{n=0}^{m-1} (b_0 + \sum_{j=0}^{im+n-1} w_j)$, we can assume for the derivation $b_0 = 0$
+
+$\overline b_i = \frac1m \sum_{n=0}^{m-1} (\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t})$
+
+$\overline b_i = \frac1m \sum_{n=0}^{m-1} \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} \sum_{t=0}^{n} w_{im+t}$
+
+$\overline b_i = \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} (m-n) w_{im+n}$
+
+$$
+\boxed{\;
+\bar b_i \;=\; \sum_{j=0}^{im-1} w_j \;+\; \frac{1}{m}\sum_{n=0}^{m-1} (m-n)\,w_{im+n} \;
+}
+$$
+
+---
 
 * **White noise region**
 
