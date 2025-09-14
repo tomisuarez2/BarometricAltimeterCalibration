@@ -139,7 +139,9 @@ We need to:
 
 Then:
 
-$$\overline b_i = \frac1m \sum_{n=0}^{m-1} (b_0 + \sum_{j=0}^{im+n-1} w_j)$, we can assume for the derivation $b_0 = 0$$
+$$\overline b_i = \frac1m \sum_{n=0}^{m-1} \big(b_0 + \sum_{j=0}^{im+n-1} w_j\big)$$
+
+we can assume for the derivation $b_0 = 0$
 
 $$\overline b_i = \frac1m \sum_{n=0}^{m-1} (\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t})$
 
