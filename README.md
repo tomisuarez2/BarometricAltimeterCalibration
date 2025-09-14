@@ -198,9 +198,9 @@ $$
 \begin{aligned}
 S &= \sum_{n=0}^{m-1} n^2 + \sum_{k=1}^{m} k^2
 = \frac{(m-1)m(2m-1)}{6} + \frac{m(m+1)(2m+1)}{6} \\
-&= \frac{m}{6}\Big[ (m-1)(2m-1) + (m+1)(2m+1)\Big] \\
-&= \frac{m}{6}\Big[(2m^2-3m+1) + (2m^2+3m+1)\Big] \\
-&= \frac{m}{6}(4m^2 + 2) \;=\; \frac{m(2m^2+1)}{3}.
+&= \frac{m}{6}\big( (m-1)(2m-1) + (m+1)(2m+1)\big) \\
+&= \frac{m}{6}\big((2m^2-3m+1) + (2m^2+3m+1)\big) \\
+&= \frac{m}{6}(4m^2 + 2) = \frac{m(2m^2+1)}{3}.
 \end{aligned}
 $$
 
@@ -209,14 +209,10 @@ Therefore
 $$
 \mathrm{Var}(\bar b_{i+1}-\bar b_i)
 = \frac{Q}{m^2}\cdot \frac{m(2m^2+1)}{3}
-= Q\,\frac{2m^2+1}{3m}.
+= Q\frac{2m^2+1}{3m}.
 $$
 
----
-
----
-
-## 4) Allan variance (exact discrete expression)
+### Allan variance (exact discrete expression)
 
 Recall Allan variance is one half of the expected squared difference:
 
