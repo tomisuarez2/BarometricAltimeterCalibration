@@ -147,7 +147,7 @@ $$\overline b_i = \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} (m-n) w_{im+n
 Compute similarly $\bar b_{i+1}$ and subtract:
 
 $$
-\bar b_{i+1} \;=\; \sum_{j=0}^{(i+1)m-1} w_j \;+\; \frac{1}{m}\sum_{n=0}^{m-1} (m-n)\,w_{(i+1)m+n}.
+\bar b_{i+1} = \sum_{j=0}^{(i+1)m-1} w_j + \frac{1}{m}\sum_{n=0}^{m-1} (m-n)w_{(i+1)m+n}
 $$
 
 Subtract $\bar b_i$. The common sum $\sum_{j=0}^{im-1} w_j$ cancels. Collect terms:
@@ -155,7 +155,7 @@ Subtract $\bar b_i$. The common sum $\sum_{j=0}^{im-1} w_j$ cancels. Collect ter
 * Terms with indices $j=im + n$ (the middle block) appear from the expansion of $\bar b_{i+1}$ as full sum and from $\bar b_i$ with coefficient $(m-n)/m$. Their net coefficient is
 
   $$
-  1 - \frac{m-n}{m} \;=\; \frac{n}{m}.
+  1 - \frac{m-n}{m} = \frac{n}{m}
   $$
   
 * Terms with indices $j=(i+1)m + n$ (the next block) appear only in $\bar b_{i+1}$ with coefficient $(m-n)/m$.
@@ -163,13 +163,54 @@ Subtract $\bar b_i$. The common sum $\sum_{j=0}^{im-1} w_j$ cancels. Collect ter
 Thus
 
 $$
-\boxed{\;
-\bar b_{i+1}-\bar b_i \;=\; \frac{1}{m}\sum_{n=0}^{m-1} \bigg( n\,w_{im+n} + (m-n)\,w_{(i+1)m+n}\bigg).
-\;}
+\bar b_{i+1}-\bar b_i = \frac{1}{m}\sum_{n=0}^{m-1} \bigg( nw_{im+n} + (m-n)w_{(i+1)m+n}\bigg)
 $$
 
 This is a linear combination of $2m$ independent increments $w$ with known deterministic coefficients.
+
 ---
+
+## 3) Variance of the difference (exact finite-$m$ expression)
+
+Because the $w$'s are independent, the variance of the linear combination equals $Q$ times the sum of squared coefficients:
+
+$$
+\begin{aligned}
+\operatorname{Var}(\bar b_{i+1}-\bar b_i)
+&= \frac{Q}{m^2}\sum_{n=0}^{m-1} \big( n^2 + (m-n)^2 \big) \\
+&= \frac{Q}{m^2}\Big( \sum_{n=0}^{m-1} n^2 + \sum_{n=0}^{m-1} (m-n)^2 \Big)
+\end{aligned}
+$$
+
+Evaluate the sums. Use the known formula:
+
+$$
+\sum_{n=0}^{m-1} n^2 = \frac{(m-1)m(2m-1)}{6},\qquad
+\sum_{k=1}^{m} k^2 = \frac{m(m+1)(2m+1)}{6}
+$$
+
+Noting $\sum_{n=0}^{m-1}(m-n)^2 = \sum_{k=1}^{m} k^2$, sum them:
+
+$$
+\begin{aligned}
+S &= \sum_{n=0}^{m-1} n^2 + \sum_{k=1}^{m} k^2
+= \frac{(m-1)m(2m-1)}{6} + \frac{m(m+1)(2m+1)}{6} \\
+&= \frac{m}{6}\Big[ (m-1)(2m-1) + (m+1)(2m+1)\Big] \\
+&= \frac{m}{6}\Big[(2m^2-3m+1) + (2m^2+3m+1)\Big] \\
+&= \frac{m}{6}(4m^2 + 2) \;=\; \frac{m(2m^2+1)}{3}.
+\end{aligned}
+$$
+
+Therefore
+
+$$
+\operatorname{Var}(\bar b_{i+1}-\bar b_i)
+= \frac{Q}{m^2}\cdot \frac{m(2m^2+1)}{3}
+= Q\,\frac{2m^2+1}{3m}.
+$$
+
+---
+
 
 * **White noise region**
 
