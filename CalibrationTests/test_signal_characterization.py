@@ -5,9 +5,6 @@ University: Universidad Nacional de Cuyo
 """
 
 import numpy as np
-import pandas as pd
-from scipy.signal import decimate, medfilt
-from numpy.linalg import lstsq
 from BarometricAltimeterCalibrationModules import bar_altimeter_calibration as bar
 from BarometricAltimeterCalibrationModules.utils import extract_barometric_altimeter_data, show_time_data
 
