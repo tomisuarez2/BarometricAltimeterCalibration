@@ -228,7 +228,7 @@ Replace $Q=qT_s$ and $m=\tau/T_s$ to express in $\tau$ and $T_s$. Two algebraica
 
 $$
 \sigma^2(\tau)
-= \frac{q}{3}\tau + \frac{qT_s^{2}}{6\tau}.
+= \frac{q}{3}\tau + \frac{qT_s^{2}}{6\tau}
 $$
 
 (derivation: substitute $Q=qT_s$ and simplify).
@@ -237,7 +237,7 @@ $$
 
 $$
 \sigma^2(\tau)
-= \frac{6\tau\sigma^2(\tau)}{2\tau^2 + T_s^2}\quad\text{(rearranged when solving for }q\text{)}.
+= \frac{6\tau\sigma^2(\tau)}{2\tau^2 + T_s^2}\quad\text{(rearranged when solving for }q\text{)}
 $$
 
 The first form is very instructive: it is the exact discrete formula and clearly shows the **leading term** $(q/3)\tau$ and the **finite-sample correction** $\dfrac{qT_s^2}{6\tau}$.
@@ -247,15 +247,15 @@ The first form is very instructive: it is the exact discrete formula and clearly
 For $m\gg 1$ (i.e. $\tau \gg T_s$), the correction term is negligible. Then
 
 $$
-\sigma^2(\tau) \approx \frac{q}{3}\,\tau
+\sigma^2(\tau) \approx \frac{q}{3}\tau
 \qquad\Longrightarrow\qquad
-\sigma(\tau) \approx \sqrt{\frac{q}{3}}\,\sqrt{\tau}.
+\sigma(\tau) \approx \sqrt{\frac{q}{3}}\sqrt{\tau}
 $$
 
 So on a log–log Allan plot the random-walk region appears as a straight line of slope $+\tfrac{1}{2}$. From the intercept $a_{\text{rw}}$ of the fit
 
 $$
-\log_{10}\sigma(\tau) = \tfrac12\log_{10}\tau + a_{\text{rw}},
+\log_{10}\sigma(\tau) = \tfrac12\log_{10}\tau + a_{\text{rw}}
 $$
 
 we get (neglecting finite-sample correction)
@@ -267,7 +267,7 @@ $$
 This is the common practical formula used when $\tau$ is comfortably larger than $T_s$.
 
 ---
-Summarazing:
+### Summarazing:
 
 * **White noise region**
 
