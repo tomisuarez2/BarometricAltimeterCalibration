@@ -173,7 +173,7 @@ $$
 
 This is a linear combination of $2m$ independent increments $w$ with known deterministic coefficients.
 
-### Variance of the difference (exact finite-$m$ expression)
+### Variance of the difference (exact finite-m expression)
 
 Because the $w$'s are independent, the variance of the linear combination equals $Q$ times the sum of squared coefficients:
 
@@ -200,7 +200,7 @@ S &= \sum_{n=0}^{m-1} n^2 + \sum_{k=1}^{m} k^2
 = \tfrac{(m-1)m(2m-1)}{6} + \tfrac{m(m+1)(2m+1)}{6} \\
 &= \tfrac{m}{6}\Big[ (m-1)(2m-1) + (m+1)(2m+1)\Big] \\
 &= \tfrac{m}{6}\Big[(2m^2-3m+1) + (2m^2+3m+1)\Big] \\
-&= \tfrac{m}{6}(4m^2 + 2) = \frac{m(2m^2+1)}{3}.
+&= \tfrac{m}{6}(4m^2 + 2) = \frac{m(2m^2+1)}{3}
 \end{aligned}
 $$
 
@@ -209,7 +209,7 @@ Therefore
 $$
 \mathrm{Var}(\bar b_{i+1}-\bar b_i)
 = \frac{Q}{m^2}\cdot \frac{m(2m^2+1)}{3}
-= Q\cdot \frac{2m^2+1}{3m}.
+= Q\cdot \frac{2m^2+1}{3m}
 $$
 
 ### Allan variance (exact discrete expression)
@@ -217,11 +217,9 @@ $$
 Recall Allan variance is one half of the expected squared difference:
 
 $$
-\boxed{\;
-\sigma^2(\tau) \;=\; \tfrac12\operatorname{Var}(\bar b_{i+1}-\bar b_i)
-\;=\; \frac{Q}{2}\cdot\frac{2m^2+1}{3m}
-\;=\; Q\,\frac{2m^2+1}{6m}.
-\;}
+\sigma^2(\tau) = \tfrac12\mathrm{Var}(\bar b_{i+1}-\bar b_i)
+= \frac{Q}{2}\cdot\frac{2m^2+1}{3m}
+= Q\cdot \frac{2m^2+1}{6m}
 $$
 
 Replace $Q=qT_s$ and $m=\tau/T_s$ to express in $\tau$ and $T_s$. Two algebraically equivalent forms are useful:
@@ -229,10 +227,8 @@ Replace $Q=qT_s$ and $m=\tau/T_s$ to express in $\tau$ and $T_s$. Two algebraica
 1. Expand to isolate the dominant and correction terms:
 
 $$
-\boxed{\;
 \sigma^2(\tau)
-\;=\; \frac{q}{3}\,\tau \;+\; \frac{q\,T_s^{2}}{6\,\tau}.
-\;}
+= \frac{q}{3}\tau + \frac{qT_s^{2}}{6\tau}.
 $$
 
 (derivation: substitute $Q=qT_s$ and simplify).
@@ -241,14 +237,12 @@ $$
 
 $$
 \sigma^2(\tau)
-\;=\; \frac{6\tau\,\sigma^2(\tau)}{2\tau^2 + T_s^2}\quad\text{(rearranged when solving for }q\text{)}.
+= \frac{6\tau\sigma^2(\tau)}{2\tau^2 + T_s^2}\quad\text{(rearranged when solving for }q\text{)}.
 $$
 
 The first form is very instructive: it is the exact discrete formula and clearly shows the **leading term** $(q/3)\tau$ and the **finite-sample correction** $\dfrac{qT_s^2}{6\tau}$.
 
----
-
-## 5) Asymptotic (continuous / large-$m$) approximation
+### Asymptotic (continuous / large-m) approximation
 
 For $m\gg 1$ (i.e. $\tau \gg T_s$), the correction term is negligible. Then
 
@@ -267,7 +261,7 @@ $$
 we get (neglecting finite-sample correction)
 
 $$
-\boxed{\;q \approx 3\cdot\big(10^{a_{\text{rw}}}\big)^2.\;}
+q \approx 3\cdot\big(10^{a_{\text{rw}}}\big)^2
 $$
 
 This is the common practical formula used when $\tau$ is comfortably larger than $T_s$.
