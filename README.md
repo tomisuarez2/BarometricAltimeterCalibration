@@ -141,15 +141,14 @@ Then:
 
 $$\overline b_i = \frac1m \sum_{n=0}^{m-1} \big(b_0 + \sum_{j=0}^{im+n-1} w_j\big)$$
 
-we can assume for the derivation $b_0 = 0$
+we can assume for the derivation $b_0 = 0$, then:
 
-$$\overline b_i = \frac1m \sum_{n=0}^{m-1} (\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t})$
+$$\overline b_i = \frac1m \sum_{n=0}^{m-1} \big(\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t}\big)$$
 
 $$\overline b_i = \frac1m \sum_{n=0}^{m-1} \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} \sum_{t=0}^{n} w_{im+t}$$
 
 $$\overline b_i = \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} (m-n) w_{im+n}$$
 
----
 ### Expression for $\bar b_{i+1}-\bar b_i$
 
 Compute similarly $\bar b_{i+1}$ and subtract:
