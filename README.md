@@ -133,20 +133,42 @@ Then:
 
 Then
 
-$\overline b_i = \frac1m \sum_{n=0}^{m-1} (b_0 + \sum_{j=0}^{im+n-1} w_j)$, we can assume for the derivation $b_0 = 0$
+$$\overline b_i = \frac1m \sum_{n=0}^{m-1} (b_0 + \sum_{j=0}^{im+n-1} w_j)$, we can assume for the derivation $b_0 = 0$$
 
-$\overline b_i = \frac1m \sum_{n=0}^{m-1} (\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t})$
+$$\overline b_i = \frac1m \sum_{n=0}^{m-1} (\sum_{j=0}^{im-1} w_j + \sum_{t=0}^{n} w_{im+t})$
 
-$\overline b_i = \frac1m \sum_{n=0}^{m-1} \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} \sum_{t=0}^{n} w_{im+t}$
+$$\overline b_i = \frac1m \sum_{n=0}^{m-1} \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} \sum_{t=0}^{n} w_{im+t}$$
 
 $$\overline b_i = \sum_{j=0}^{im-1} w_j + \frac1m \sum_{n=0}^{m-1} (m-n) w_{im+n}$$
 
+---
+## 2) Expression for $\bar b_{i+1}-\bar b_i$
+
+Compute similarly $\bar b_{i+1}$ and subtract:
+
 $$
-\boxed{\;
-\bar b_i \;=\; \sum_{j=0}^{im-1} w_j \;+\; \frac{1}{m}\sum_{n=0}^{m-1} (m-n)\,w_{im+n} \;
-}
+\bar b_{i+1} \;=\; \sum_{j=0}^{(i+1)m-1} w_j \;+\; \frac{1}{m}\sum_{n=0}^{m-1} (m-n)\,w_{(i+1)m+n}.
 $$
 
+Subtract $\bar b_i$. The common sum $\sum_{j=0}^{im-1} w_j$ cancels. Collect terms:
+
+* Terms with indices $j=im + n$ (the middle block) appear from the expansion of $\bar b_{i+1}$ as full sum and from $\bar b_i$ with coefficient $(m-n)/m$. Their net coefficient is
+
+  $$
+  1 - \frac{m-n}{m} \;=\; \frac{n}{m}.
+  $$
+  
+* Terms with indices $j=(i+1)m + n$ (the next block) appear only in $\bar b_{i+1}$ with coefficient $(m-n)/m$.
+
+Thus
+
+$$
+\boxed{\;
+\bar b_{i+1}-\bar b_i \;=\; \frac{1}{m}\sum_{n=0}^{m-1} \bigg( n\,w_{im+n} + (m-n)\,w_{(i+1)m+n}\bigg).
+\;}
+$$
+
+This is a linear combination of $2m$ independent increments $w$ with known deterministic coefficients.
 ---
 
 * **White noise region**
