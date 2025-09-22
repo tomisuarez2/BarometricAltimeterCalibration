@@ -398,7 +398,7 @@ During experimentation with the **GY-63 breakout module (MS5611)**, a long-term 
 ---
 ## 📈 Input Data Format
 
-CSV with raw magnetometer values:
+CSV with altitude values:
 ```bash
 h, temp
 ```
@@ -435,7 +435,7 @@ This Arduino library for sensor comunnication is based on the excellent open-sou
 * Compare **Allan deviation vs Kalman ML identification** methods
 * Provide **real-time tools** for UAV baro-sensor integration
 
---
+---
 
 ## 🤝 Contributing
 
@@ -445,7 +445,7 @@ Fork, improve, and open a pull request 🚀
 (Also check out our other related projects: [ImuCalibration](https://github.com/tomisuarez2/ImuCalibration) and [MagnetometerCalibration](https://github.com/tomisuarez2/MagnetometerCalibration))
 
 
---
+---
 
 ## 🛰️ Contact
 
