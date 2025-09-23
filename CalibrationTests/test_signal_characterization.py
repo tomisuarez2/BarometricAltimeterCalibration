@@ -5,18 +5,19 @@ University: Universidad Nacional de Cuyo
 """
 
 import numpy as np
-from BarometricAltimeterCalibrationModules import bar_altimeter_calibration as bar
+
+import BarometricAltimeterCalibrationModules.bar_altimeter_calibration as bar
 from BarometricAltimeterCalibrationModules.utils import extract_barometric_altimeter_data, show_time_data
 
 # Use synthetic data
 synthetic = False
 
 # Save data flag
-save = True
+save = False
 
 # Read data
 if not synthetic:
-    file_name = "characterization data/static_bar_alt_data_3_3_V.csv" 
+    file_name = "characterization data/static_bar_alt_data_3_3_V_3_h.csv" 
     params, bar_data = extract_barometric_altimeter_data(file_name)
     sampling_freq, t_init = params
 else:
