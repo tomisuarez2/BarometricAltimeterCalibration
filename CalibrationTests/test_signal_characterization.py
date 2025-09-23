@@ -17,7 +17,7 @@ save = False
 
 # Read data
 if not synthetic:
-    file_name = "characterization data/static_bar_alt_data_3_3_V_3_h.csv" 
+    file_name = "characterization data/static_bar_alt_data_3_3_V.csv" 
     params, bar_data = extract_barometric_altimeter_data(file_name)
     sampling_freq, t_init = params
 else:
