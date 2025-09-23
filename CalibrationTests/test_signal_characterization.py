@@ -35,7 +35,6 @@ rel_alt = bar_data[:,0]
 temp = bar_data[:,1]
 time_vector = np.arange(0, n_samples, 1) / sampling_freq
 
-
 # Compute Allan Variance
 tau, avar = bar.compute_allan_variance(rel_alt, sampling_freq, m_steps='exponential')
 rel_alt_a_dev = np.sqrt(avar).reshape(-1)
