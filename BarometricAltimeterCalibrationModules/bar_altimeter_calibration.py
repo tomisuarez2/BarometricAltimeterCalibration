@@ -118,37 +118,44 @@ def compute_allan_variance(
 def auto_estimate_R_q_from_allan(
     tau: np.ndarray, 
     sigma: np.ndarray, 
-    fs: np.float,
+    fs: float,
     slope_tol: float=0.1, 
-    min_points: int=3,
-    plot: bool=False
+    min_points: int=4,
+    plot: bool=False,
+    u: Optional[str] = None,
+    title: Optional[str] = None,
+    spanish: bool=False
 ) -> Tuple[float, float, Tuple[int, int], Tuple[int, int]]:
     """
     Automatically estimate R and q from Allan deviation curve.
     It is assumed the standard 1-state random–walk + white-noise measurement model
-    for the altimeter signal.
+    for a sensor signal.
 
     d_k = p_k + b_k + v_k ,    v_k ~ N(0, R)
     b_{k+1} = b_k + w_k ,      w_k ~ N(0, q·T_s)
 
     where:
-        - d_k = barometer measurement (altitude)
-        - p_k = true altitude
-        - R   = white measurement–noise variance [m²]
+        - d_k = sensor measurement 
+        - p_k = true measurement
+        - R   = white measurement–noise variance [u²]
         - b_k = barometer bias at step k
-        - q   = bias random–walk intensity [m²/s]
+        - q   = bias random–walk intensity [u²/s]
         - T_s = sampling time [s]
 
     Args:
         tau: Array of interval lengths in seconds.
-        sigma: Array of corresponding Allan Deviation values [m].
+        sigma: Array of corresponding Allan Deviation values [u].
         fs: Sampling frecuency [Hz].
         slope_tol: Allowed deviation from ideal slopes (-0.5, +0.5).
         min_points: Minimum number of consecutive points to accept a region.
+        plot: Plot flag.
+        u: Plot units.
+        title: Plot title.
+        spanish: Spanish comments.
 
     Returns:
-        R: Measurement noise variance [m^2].
-        q: Random walk intensity [m^2/s].
+        R: Measurement noise variance [u^2].
+        q: Random walk intensity [u^2/s].
         tau_white_region: (min_tau, max_tau) used for white noise fit.
         tau_rw_region: (min_tau, max_tau) used for random walk fit.
     """
@@ -214,13 +221,18 @@ def auto_estimate_R_q_from_allan(
         q, tau_rw = np.nan, None
 
     if plot:
+        if spanish:
+            plot_legend = ["Desviación de Allan de la medición del sensor","Pendiente Ruido Blanco Gaussiano","Pendiente Deriva Aleatoria del Sesgo"]
+            plot_xlabel = "Duración del intervalo [s]"
+            plot_ylabel = f"Desviación de Allan de la señal del sensor [{u}]"
+        else:   
+            plot_legend = ["Sensor measurement Allan Dev.","White-Gaussian Noise slope","Random-Walk bias slope"]
+            plot_xlabel = "Interval Length [s]"
+            plot_ylabel = f"Sensor signal Allan deviation [{u}]"
         utils.show_loglog_data(tau, np.vstack([sigma,np.sqrt(R/fs)/np.sqrt(tau),np.sqrt(q/3)*np.sqrt(tau)]).T, 
-                               legend=["Relative altitude Allan Dev.","White-Gaussian Noise","Random-Walk bias"],
-                               xlabel="Interval Length [s]", ylabel="Allan Deviation [m]",
-                               title="Altitude signal Allan Deviation")
+                               legend=plot_legend, xlabel=plot_xlabel, ylabel=plot_ylabel, title=title)
 
     return R, q, tau_white, tau_rw
-
 
 
 
