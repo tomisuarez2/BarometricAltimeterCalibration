@@ -221,16 +221,44 @@ def auto_estimate_R_q_from_allan(
         q, tau_rw = np.nan, None
 
     if plot:
+        curves = [sigma]
+        legends = []
+
         if spanish:
-            plot_legend = ["Desviación de Allan de la medición del sensor","Pendiente Ruido Blanco Gaussiano","Pendiente Deriva Aleatoria del Sesgo"]
-            plot_xlabel = "Duración del intervalo [s]"
-            plot_ylabel = f"Desviación de Allan de la señal del sensor [{u}]"
-        else:   
-            plot_legend = ["Sensor measurement Allan Dev.","White-Gaussian Noise slope","Random-Walk bias slope"]
-            plot_xlabel = "Interval Length [s]"
-            plot_ylabel = f"Sensor signal Allan deviation [{u}]"
-        utils.show_loglog_data(tau, np.vstack([sigma,np.sqrt(R/fs)/np.sqrt(tau),np.sqrt(q/3)*np.sqrt(tau)]).T, 
-                               legend=plot_legend, xlabel=plot_xlabel, ylabel=plot_ylabel, title=title)
+            legends.append("Desviación de Allan de la medición del sensor")
+            xlabel = "Duración del intervalo [s]"
+            ylabel = f"Desviación de Allan de la señal del sensor [{u}]"
+        else:
+            legends.append("Sensor measurement Allan Dev.")
+            xlabel = "Interval Length [s]"
+            ylabel = f"Sensor signal Allan deviation [{u}]"
+
+        # White noise
+        if not np.isnan(R):
+            curves.append(np.sqrt(R/fs)/np.sqrt(tau))
+            if spanish:
+                legends.append("Pendiente Ruido Blanco Gaussiano")
+            else:
+                legends.append("White-Gaussian Noise slope")
+
+        # Random walk
+        if not np.isnan(q):
+            curves.append(np.sqrt(q/3)*np.sqrt(tau))
+            if spanish:
+                legends.append("Pendiente Deriva Aleatoria del Sesgo")
+            else:
+                legends.append("Random-Walk bias slope")
+
+        utils.show_loglog_data(
+            tau,
+            np.vstack(curves).T,
+            fs=fs,
+            legend=legends,
+            xlabel=xlabel,
+            ylabel=ylabel,
+            title=title,
+            spanish=spanish
+        )
 
     return R, q, tau_white, tau_rw
 

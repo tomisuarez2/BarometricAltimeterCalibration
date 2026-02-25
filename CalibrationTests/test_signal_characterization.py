@@ -9,7 +9,7 @@ import numpy as np
 import BarometricAltimeterCalibrationModules.bar_altimeter_calibration as bar
 from BarometricAltimeterCalibrationModules.utils import extract_barometric_altimeter_data, show_time_data
 
-spanish = False
+spanish = True
 
 # Use synthetic data
 synthetic = False
@@ -64,5 +64,5 @@ sim_data = bar.simulate_sensor_data(n_samples, sampling_freq, R, q, temp)
 if spanish:
     show_time_data(np.vstack([rel_alt, sim_data]).T, sampling_freq, legend=["Señal medida", "Señal simulada"], xlabel="Tiempo [s]", ylabel="[m]", title="Comparación de señales - Barómetro")
 else:
-    show_time_data(np.vstack([rel_alt, sim_data]).T, sampling_freq, ["Logged Signal", "Simulated Signal"], ylabel="[m]", title="Signal comparison - Barometer")
+    show_time_data(np.vstack([rel_alt, sim_data]).T, sampling_freq, legend=["Logged Signal", "Simulated Signal"], xlabel ="Time [s]", ylabel="[m]", title="Signal comparison - Barometer")
 
