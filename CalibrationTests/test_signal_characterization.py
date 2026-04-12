@@ -9,7 +9,7 @@ import numpy as np
 import BarometricAltimeterCalibrationModules.bar_altimeter_calibration as bar
 from BarometricAltimeterCalibrationModules.utils import extract_barometric_altimeter_data, show_time_data
 
-spanish = True
+spanish = False
 
 # Use synthetic data
 synthetic = False

@@ -120,7 +120,7 @@ def auto_estimate_R_q_from_allan(
     sigma: np.ndarray, 
     fs: float,
     slope_tol: float=0.1, 
-    min_points: int=4,
+    min_points: int=2,
     plot: bool=False,
     u: Optional[str] = None,
     title: Optional[str] = None,
